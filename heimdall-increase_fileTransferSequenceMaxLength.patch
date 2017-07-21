@@ -1,0 +1,13 @@
+diff --git a/heimdall/source/BridgeManager.cpp b/heimdall/source/BridgeManager.cpp
+index b7bff3d..3f36001 100644
+--- a/heimdall/source/BridgeManager.cpp
++++ b/heimdall/source/BridgeManager.cpp
+@@ -529,7 +529,7 @@ bool BridgeManager::BeginSession(void)
+ 	{
+ 		fileTransferSequenceTimeout = 120000; // 2 minutes!
+ 		fileTransferPacketSize = 1048576; // 1 MiB
+-		fileTransferSequenceMaxLength = 30; // Therefore, fileTransferPacketSize * fileTransferSequenceMaxLength == 30 MiB per sequence.
++		fileTransferSequenceMaxLength = 300; // Therefore, fileTransferPacketSize * fileTransferSequenceMaxLength == 30 MiB per sequence.
+ 
+ 		FilePartSizePacket filePartSizePacket(fileTransferPacketSize);
+ 
