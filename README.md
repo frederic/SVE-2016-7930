@@ -21,20 +21,24 @@ $ wget --user-agent="SAMSUNG-Android" "https://xdmd.sl.attcompute.com/agents/429
 $ wget --user-agent="SAMSUNG-Android" "https://xdmd.sl.attcompute.com/agents/42925/1488/SS-G900AUCU4DQA1-to-S4DQB1-UP"
 ```
 ## Procedure
-0) Unzip *G900AUCS4DQB1_boot_usb.img.gz*
+0. Unzip *G900AUCS4DQB1_boot_usb.img.gz*
 ```
 $ gunzip G900AUCS4DQB1_boot_usb.img.gz
 ```
-1) Apply *heimdall-increase_fileTransferSequenceMaxLength.patch* on Heimdall source tree & build it
-2) Insert blank SD-card in your phone
-3) Boot in Download mode (Hold Volume Down + Home buttons while booting)
+1. Apply *heimdall-increase_fileTransferSequenceMaxLength.patch* on Heimdall source tree
+```
+$ patch -p1 -d Heimdall/ < heimdall-increase_fileTransferSequenceMaxLength.patch
+```
+2. Build Heimdall
+3. Insert blank SD-card in your phone
+4. Boot in Download mode (Hold Volume Down + Home buttons while booting)
 
-4) Prepare the SD-card with Heimdall
+5. Prepare the SD-card with Heimdall
 ```
 $ heimdall flash --tflash --verbose --repartition --pit ./KLTE_USA_ATT.pit --BOOT ./G900AUCS4DQB1_boot_sdcard.img --RECOVERY ./twrp-3.1.0-1-klte.img
 ```
-5) Reboot in Download mode again
-6) Trigger the exploit
+6. Reboot in Download mode again
+7. Trigger the exploit
 ```
 $ heimdall flash --tflash --verbose --no-reboot --BOOT ./G900AUCS4DQB1_boot_usb.img
 ```
